@@ -1,4 +1,4 @@
-# GitHub Repositories API![build](https://github.com/mjedynak/github-repositories-api/blob/master/.github/workflows/build-gradle-project.yml/badge.svg?branch=master)
+# GitHub Repositories API![build](https://github.com/mjedynak/github-repositories-api/actions/workflows/build-gradle-project.yml/badge.svg?branch=master)
 Simple facade over official GitHub API that allows to retrieve information about given user's repositories.
 
 The purpose of the project is to show sample implementation of REST API (implemented with Java, [Spring Boot](https://spring.io/projects/spring-boot), [WebFlux](https://docs.spring.io/spring-framework/reference/web/webflux.html), [WireMock](https://wiremock.org/)) 
