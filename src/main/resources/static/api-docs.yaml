@@ -1,0 +1,64 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v1
+paths:
+  /repositories/{user}:
+    get:
+      tags:
+        - Repositories
+      summary: Retrieve user repositories
+      description: Get all repositories of a given user which are not forks
+      parameters:
+        - name: user
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Repository'
+        "404":
+          description: Given user does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "406":
+          description: Cannot produce a response matching acceptable request's headers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        message:
+          type: string
+    Branch:
+      type: object
+      properties:
+        name:
+          type: string
+        commitSha:
+          type: string
+    Repository:
+      type: object
+      properties:
+        name:
+          type: string
+        ownerLogin:
+          type: string
+        branches:
+          type: array
+          items:
+            $ref: '#/components/schemas/Branch'
